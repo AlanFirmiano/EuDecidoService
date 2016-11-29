@@ -29,8 +29,6 @@ public class Usuario {
 
 	@Column(nullable = false)
 	private String email;
-	@Column(nullable = false)
-	private String titulo;
 	@OneToOne
 	@Cascade(CascadeType.ALL)
 	private Endereco endereco;
@@ -73,14 +71,6 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
 	}
 
 	public Endereco getEndereco() {

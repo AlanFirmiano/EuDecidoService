@@ -36,7 +36,7 @@ public class UsuarioService {
 		return repository.findById(id);
 	}
 
-	public List<Usuario> buscarPorCPF(String cpf) {
+	public Usuario buscarPorCPF(String cpf) {
 		return repository.findByCpf(cpf);
 	}
 
