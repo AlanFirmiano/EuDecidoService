@@ -27,11 +27,6 @@ public class UsuarioController {
 		this.uService = uService;
 	}
 
-	@RequestMapping(value = "/buscarTodos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<Usuario>> getAllUsuarios() {
-		return new ResponseEntity<List<Usuario>>(uService.listar(), HttpStatus.OK);
-	}
-
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> salvar(@RequestBody Usuario usuario) {
 		return new ResponseEntity<String>(uService.salvar(usuario), HttpStatus.OK);
