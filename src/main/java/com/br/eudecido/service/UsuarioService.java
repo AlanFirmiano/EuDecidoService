@@ -56,16 +56,8 @@ public class UsuarioService {
 		return "Atualizado";
 	}
 
-	public Usuario logar(String email, String senha) {
-		Usuario usuario = repository.findByEmail(email);
-		return usuario;
-	}
-
-	public boolean logadoComSucesso(Usuario usuario) {
-		if (logar(usuario.getEmail(), usuario.getSenha()) != null) {
-			return true;
-		}
-		return false;
+	public boolean logar(String email, String senha) {
+		return (repository.findByEmailAndSenha(email, senha) != null);
 	}
 
 }

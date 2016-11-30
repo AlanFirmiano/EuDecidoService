@@ -10,7 +10,9 @@ import com.br.eudecido.models.Usuario;
 
 public interface ProjetoRepository extends JpaRepository<Projeto, Integer>{
 	
-	List<Projeto> findByNome(String nome);
+	Projeto findById(Integer id);
+	
+	List<Projeto> findByNomeContainingIgnoreCase(String nome);
 	
 	List<Projeto> findByUsuario(Usuario usuario);
 }
