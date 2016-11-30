@@ -34,7 +34,6 @@ public class UsuarioController {
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> salvar(@RequestBody Usuario usuario) {
-		System.out.println(usuario.getNome()+ " " + usuario.getCpf());
 		return new ResponseEntity<String>(uService.salvar(usuario), HttpStatus.OK);
 	}
 
