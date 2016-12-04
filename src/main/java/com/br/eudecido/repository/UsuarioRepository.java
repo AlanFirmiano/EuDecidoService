@@ -1,7 +1,5 @@
 package com.br.eudecido.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.br.eudecido.models.Usuario;

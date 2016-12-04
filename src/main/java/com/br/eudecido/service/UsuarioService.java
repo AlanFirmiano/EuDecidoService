@@ -16,12 +16,12 @@ public class UsuarioService {
 
 	public String salvar(Usuario usuario) {
 		if (this.buscarPorCPF(usuario.getCpf()) != null)
-			return "CPF já está em uso";
+			return "cpf";
 		if (this.buscarPorEmail(usuario.getEmail()) != null)
-			return "Email já está em uso";
+			return "email";
 
 		repository.save(usuario);
-		return "Usuario cadastrado!";
+		return "sucesso";
 	}
 
 	public void excluir(Integer id) {
@@ -48,12 +48,12 @@ public class UsuarioService {
 		Usuario user = this.buscarPorId(usuario.getId());
 
 		if ((user.getCpf().equals(usuario.getCpf())) || (this.buscarPorCPF(usuario.getCpf()) != null))
-			return "CPF já está em uso";
+			return "cpf";
 		if ((user.getEmail().equals(usuario.getEmail())) || (this.buscarPorEmail(usuario.getEmail()) != null))
-			return "Email já está em uso";
+			return "email";
 
 		repository.save(usuario);
-		return "Atualizado";
+		return "atualizado";
 	}
 
 	public boolean logar(String email, String senha) {
