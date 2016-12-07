@@ -29,10 +29,10 @@ public class Projeto {
 	@Column(nullable = false)
 	private String descricao;
 	@Column(nullable = false)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", locale = "GMT-3")
 	private Date inicio;
 	@Column(nullable = false)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", locale = "GMT-3")
 	private Date fim;
 	@Column(nullable = false)
 	private boolean conclusao;

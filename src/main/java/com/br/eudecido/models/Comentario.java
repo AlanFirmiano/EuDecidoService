@@ -22,7 +22,7 @@ public class Comentario {
 	@Column(nullable = false)
 	private String descricao;
 	@Column(nullable = false)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", locale = "GMT-3")
 	private Date data;
 	@ManyToOne
 	private Usuario usuario;
