@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.br.eudecido.models.Usuario;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Comentario {
@@ -21,6 +22,7 @@ public class Comentario {
 	@Column(nullable = false)
 	private String descricao;
 	@Column(nullable = false)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
 	private Date data;
 	@ManyToOne
 	private Usuario usuario;
