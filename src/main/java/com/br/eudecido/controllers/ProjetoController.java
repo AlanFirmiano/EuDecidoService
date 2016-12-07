@@ -37,28 +37,35 @@ public class ProjetoController {
 		return new ResponseEntity<String>("Projeto cadastrado!", HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/excluir", method = RequestMethod.POST, 
+			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> excluir(@RequestBody Integer id){
+		pService.excluir(id);
+		return new ResponseEntity<String>("Deletado", HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/salvarReacao", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public void salvarReacao(Reacao reacao){
-		pService.salvarReacao(reacao);
+	public ResponseEntity<String> salvarReacao(@RequestBody Reacao reacao){
+		return new ResponseEntity<String>(pService.salvarReacao(reacao), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/excluirReacao", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public void excluirReacao(Reacao reacao){
-		pService.excluirReacao(reacao.getId());
+	public ResponseEntity<String> excluirReacao(@RequestBody Reacao reacao){
+		return new ResponseEntity<String>(pService.excluirReacao(reacao.getId()), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/salvarComentario", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public void salvarComentario(Comentario comentario){
-		pService.salvarComentario(comentario);
+	public ResponseEntity<String> salvarComentario(@RequestBody Comentario comentario){
+		return new ResponseEntity<String>(pService.salvarComentario(comentario), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/excluirComentario", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public void excluirComentario(Comentario comentario){
-		pService.excluirComentario(comentario.getId());
+	public ResponseEntity<String> excluirComentario(@RequestBody Comentario comentario){
+		return new ResponseEntity<String>(pService.excluirComentario(comentario.getId()), HttpStatus.OK);
 	}
 	
 }

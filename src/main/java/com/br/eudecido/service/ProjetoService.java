@@ -54,12 +54,14 @@ public class ProjetoService {
 	
 	// Parte Reacao
 	
-	public void salvarReacao(Reacao reacao){
+	public String salvarReacao(Reacao reacao){
 		repositoryReacao.save(reacao);
+		return "sucesso";
 	}
 	
-	public void excluirReacao(Integer id){
+	public String excluirReacao(Integer id){
 		repositoryReacao.delete(id);
+		return "sucesso";
 	}
 	
 	public Reacao buscarReacaoPorUsuarioEProjeto(Usuario usuario, Projeto projeto){
@@ -68,11 +70,13 @@ public class ProjetoService {
 	
 	// Parte Comentario
 	
-	public void salvarComentario(Comentario comentario){
+	public String salvarComentario(Comentario comentario){
 		repositoryComentario.save(comentario);
+		return "sucesso";
 	}
 	
-	public void excluirComentario(Integer id){
+	public String excluirComentario(Integer id){
 		repositoryComentario.delete(id);
+		return "sucesso";
 	}
 }
