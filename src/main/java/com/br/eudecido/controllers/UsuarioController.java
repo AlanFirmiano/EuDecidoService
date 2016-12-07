@@ -31,8 +31,8 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value = "/logar", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Boolean> logar(@RequestBody Usuario usuario) {
-		return new ResponseEntity<Boolean>(uService.logar(usuario.getEmail(), usuario.getSenha()), HttpStatus.OK);
+	public ResponseEntity<String> logar(@RequestBody Usuario usuario) {
+		return new ResponseEntity<String>(uService.logar(usuario.getEmail(), usuario.getSenha()), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/atualizar", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

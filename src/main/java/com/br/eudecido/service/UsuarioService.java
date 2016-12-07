@@ -47,17 +47,24 @@ public class UsuarioService {
 	public String atualizar(Usuario usuario) {
 		Usuario user = this.buscarPorId(usuario.getId());
 
-		if ((user.getCpf().equals(usuario.getCpf())) || (this.buscarPorCPF(usuario.getCpf()) != null))
+		if ((user.getCpf().equals(usuario.getCpf()))
+				|| (this.buscarPorCPF(usuario.getCpf()) != null))
 			return "cpf";
-		if ((user.getEmail().equals(usuario.getEmail())) || (this.buscarPorEmail(usuario.getEmail()) != null))
+		if ((user.getEmail().equals(usuario.getEmail()))
+				|| (this.buscarPorEmail(usuario.getEmail()) != null))
 			return "email";
 
 		repository.save(usuario);
 		return "atualizado";
 	}
 
-	public boolean logar(String email, String senha) {
-		return (repository.findByEmailAndSenha(email, senha) != null);
+	public String logar(String email, String senha) {
+		Usuario u = repository.findByEmailAndSenha(email, senha);
+		if (u != null) {
+			return "sucesso";
+		} else {
+			return "erro";
+		}
 	}
 
 }
