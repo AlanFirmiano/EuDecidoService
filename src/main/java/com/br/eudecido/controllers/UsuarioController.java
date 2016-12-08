@@ -41,9 +41,9 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value = "/remover", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Boolean> remover(@RequestBody Integer id) {
+	public ResponseEntity<String> remover(@RequestBody Integer id) {
 		uService.excluir(id);
-		return new ResponseEntity<Boolean>(uService.buscarPorId(id) == null, HttpStatus.OK);
+		return new ResponseEntity<String>("excluido", HttpStatus.OK);
 	}
 
 }
