@@ -15,8 +15,14 @@ public class PoliticoService {
 	@Autowired
 	private PoliticoRepository repository;
 	
-	public void salvar(Politico politico){
-		repository.save(politico);
+	public String salvar(Politico politico){
+		try {
+			repository.save(politico);
+			return "sucesso";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	
 	}
 	
 	public Politico buscarPorId(Integer id){
@@ -27,14 +33,14 @@ public class PoliticoService {
 		return repository.findAll();
 	}
 	
-	public boolean logar(Politico politico){
+	public Politico logar(Politico politico){
 		Politico p = repository.findByEmailAndSenha(politico.getEmail(), politico.getSenha());
 		
 		if(p!=null)
 			if(new Date().before(p.getFim_mandato()))
-				return true;
+				return p;
 		
 		
-		return false;
+		return null;
 	}
 }
