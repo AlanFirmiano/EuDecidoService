@@ -11,10 +11,10 @@ public class CredencialService {
 	@Autowired
 	private CredencialRepository repository;
 	
-	public Credencial credencial(String credencialRecebida){
+	public String credencial(String credencialRecebida){
 		Credencial credencial = repository.findByCredencial(credencialRecebida);
 		if(credencial != null){
-			return credencial;
+			return "sucesso";
 		}
 		return null;
 	}
