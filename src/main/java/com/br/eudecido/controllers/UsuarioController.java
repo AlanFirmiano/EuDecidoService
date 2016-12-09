@@ -45,5 +45,7 @@ public class UsuarioController {
 		uService.excluir(id);
 		return new ResponseEntity<String>("excluido", HttpStatus.OK);
 	}
+	
+	
 
 }
