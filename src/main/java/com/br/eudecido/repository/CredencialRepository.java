@@ -8,4 +8,5 @@ public interface CredencialRepository extends JpaRepository<Credencial, Integer>
 	
 	Credencial findByCredencial(String credencial);
 
+
 }
