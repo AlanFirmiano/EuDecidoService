@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.eudecido.models.CredenciamentoPolitico;
+import com.br.eudecido.models.Credencial;
 import com.br.eudecido.service.CredencialService;
 
 @Controller
@@ -20,10 +20,10 @@ public class CredencialController {
 	@Autowired
 	private CredencialService service;
 
-	@RequestMapping(value = "/verificarCredencial", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> logar(
-			@RequestBody CredenciamentoPolitico credenciamento) {
-		return new ResponseEntity<String>(service.credencial(credenciamento),
+	@RequestMapping(value = "/salvarCredencial", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> salvarPolitico(
+			@RequestBody Credencial credenciamento) {
+		return new ResponseEntity<String>(service.salvarCredencial(credenciamento),
 				HttpStatus.OK);
 	}
 }

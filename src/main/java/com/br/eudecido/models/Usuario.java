@@ -1,6 +1,7 @@
 package com.br.eudecido.models;
 
 
+import javax.jws.Oneway;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,9 +30,11 @@ public class Usuario {
 
 	@Column(nullable = false)
 	private String email;
+	
 	@OneToOne
 	@Cascade(CascadeType.ALL)
 	private Endereco endereco;
+	
 
 	public Integer getId() {
 		return id;

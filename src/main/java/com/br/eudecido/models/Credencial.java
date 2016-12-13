@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Credencial {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
