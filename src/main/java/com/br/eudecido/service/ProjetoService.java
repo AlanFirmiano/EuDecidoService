@@ -51,6 +51,10 @@ public class ProjetoService {
 		return repositoryProjeto.findById(id);
 	}
 	
+	public Projeto buscarPorIdNotLazy(Integer id){
+		return repositoryProjeto.findByIdNotLazy(id);
+	}
+	
 	
 	// Parte Reacao
 	

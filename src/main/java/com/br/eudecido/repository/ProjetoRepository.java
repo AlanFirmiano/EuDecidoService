@@ -1,6 +1,8 @@
 package com.br.eudecido.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.lang.String;
 import java.util.List;
@@ -15,4 +17,7 @@ public interface ProjetoRepository extends JpaRepository<Projeto, Integer>{
 	List<Projeto> findByNomeContainingIgnoreCase(String nome);
 	
 	List<Projeto> findByUsuario(Usuario usuario);
+	
+	@Query("SELECT p FROM Projeto p JOIN FETCH p.listaComentarios JOIN FETCH p.listaReacoes WHERE p.id = (:id)")
+	Projeto findByIdNotLazy(@Param("id") Integer id);
 }

@@ -30,6 +30,11 @@ public class ProjetoController {
 		return new ResponseEntity<List<Projeto>>(pService.listar(), HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/teste", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Projeto> getUsuario(){
+		return new ResponseEntity<Projeto>(pService.buscarPorIdNotLazy(1), HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> salvar(@RequestBody Projeto projeto){
