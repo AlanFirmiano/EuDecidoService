@@ -18,7 +18,8 @@ public class CredencialService {
 	private PoliticoService pService;
 
 	public String salvarPolitico(Politico politico) {
-		Credencial c = repository.findByCredencial(politico.getCredencial().getCredencial());
+		Credencial c = repository.findByCodigo(politico.getCredencial().getCodigo());
+		
 		if (c != null) {
 			politico.setCredencial(c);
 			
@@ -38,8 +39,7 @@ public class CredencialService {
 			fim = calendario.getTime();
 			
 			
-			politico.setFim_mandato(fim);
-			
+			politico.setFim_mandato(fim);			
 			return pService.salvar(politico);
 		}
 		return "erro";

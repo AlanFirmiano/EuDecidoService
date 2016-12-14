@@ -6,7 +6,7 @@ import com.br.eudecido.models.Credencial;
 
 public interface CredencialRepository extends JpaRepository<Credencial, Integer>{
 	
-	Credencial findByCredencial(String credencial);
+	Credencial findByCodigo(String codigo);
 
 
 }

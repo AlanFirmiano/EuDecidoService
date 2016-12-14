@@ -1,6 +1,5 @@
 package com.br.eudecido.models;
 
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -21,9 +20,7 @@ public class Politico extends Usuario {
 	@Column(nullable = false)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", locale = "GMT-3")
 	private Date fim_mandato;
-	@Column(nullable = false)
-	private String cargo;
-	
+
 	@OneToOne(optional = true)
 	@Cascade(CascadeType.ALL)
 	private Credencial credencial;
@@ -44,14 +41,6 @@ public class Politico extends Usuario {
 		this.fim_mandato = fim_mandato;
 	}
 
-	public String getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
-	}
-
 	public Credencial getCredencial() {
 		return credencial;
 	}
@@ -59,7 +48,5 @@ public class Politico extends Usuario {
 	public void setCredencial(Credencial credencial) {
 		this.credencial = credencial;
 	}
-	
-	
 
 }

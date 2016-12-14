@@ -21,9 +21,9 @@ public class CredencialController {
 	private CredencialService service;
 
 	@RequestMapping(value = "/salvarCredencial", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> salvarPolitico(
-			@RequestBody Credencial credenciamento) {
-		return new ResponseEntity<String>(service.salvarCredencial(credenciamento),
+	public ResponseEntity<String> salvarCredencial(
+			@RequestBody Credencial codigo) {
+		return new ResponseEntity<String>(service.salvarCredencial(codigo),
 				HttpStatus.OK);
 	}
 }

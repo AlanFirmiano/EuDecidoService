@@ -13,7 +13,7 @@ public class Credencial {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@Column(nullable = false)
-	private String credencial;
+	private String codigo;
 
 	public Integer getId() {
 		return id;
@@ -23,12 +23,12 @@ public class Credencial {
 		this.id = id;
 	}
 
-	public String getCredencial() {
-		return credencial;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setCredencial(String credencial) {
-		this.credencial = credencial;
+	public void setCodigo(String credencial) {
+		this.codigo = credencial;
 	}
 
 }
