@@ -3,10 +3,12 @@ package com.br.eudecido.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Reacao {
@@ -16,9 +18,9 @@ public class Reacao {
 	private Integer id;
 	@Column(nullable = false)
 	private boolean gostei;
-	@ManyToOne
+	@OneToOne
 	private Usuario usuario;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Projeto projeto;
 
 	public Integer getId() {

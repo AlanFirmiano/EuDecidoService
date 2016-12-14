@@ -5,6 +5,7 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Comentario {
 	private Date data;
 	@ManyToOne
 	private Usuario usuario;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Projeto projeto;
 
 	public Integer getId() {

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,10 +38,10 @@ public class Projeto {
 	private boolean conclusao;
 	@ManyToOne
 	private Usuario usuario;
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY)
 	@Cascade(CascadeType.DELETE)
 	private List<Comentario> listaComentarios;
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY)
 	@Cascade(CascadeType.DELETE)
 	private List<Reacao> listaReacoes;
 
