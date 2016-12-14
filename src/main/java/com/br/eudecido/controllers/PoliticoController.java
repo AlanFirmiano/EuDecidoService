@@ -21,28 +21,26 @@ import com.br.eudecido.service.PoliticoService;
 @RestController
 @RequestMapping(value = "/politicoController")
 public class PoliticoController {
-	
+
 	@Autowired
 	private PoliticoService service;
-	
+
 	@Autowired
 	private CredencialService credencialService;
-
-	
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> salvar(@RequestBody Politico politico) {
 		return new ResponseEntity<String>(credencialService.salvarPolitico(politico), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/logar", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Usuario> logar(@RequestBody Politico politico) {
-		return new ResponseEntity<Usuario>(service.logar(politico), HttpStatus.OK);
+	@RequestMapping(value = "/buscar", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Usuario> logar(@RequestBody Integer id) {
+		return new ResponseEntity<Usuario>(service.buscarPorId(id), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/listar", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<Politico>> listar() {
 		return new ResponseEntity<List<Politico>>(service.buscarTodos(), HttpStatus.OK);
 	}
-	
+
 }

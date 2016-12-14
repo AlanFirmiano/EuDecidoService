@@ -1,6 +1,5 @@
 package com.br.eudecido.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,16 +30,5 @@ public class PoliticoService {
 	
 	public List<Politico> buscarTodos(){
 		return repository.findAll();
-	}
-	
-	public Politico logar(Politico politico){
-		Politico p = repository.findByEmailAndSenha(politico.getEmail(), politico.getSenha());
-		
-		if(p!=null)
-			if(new Date().before(p.getFim_mandato()))
-				return p;
-		
-		
-		return null;
 	}
 }
