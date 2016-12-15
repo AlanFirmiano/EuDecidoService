@@ -32,6 +32,7 @@ public class ProjetoService {
 
 	public String salvar(Projeto projeto) {
 		repositoryProjeto.save(projeto);
+		
 		return sucesso;
 	}
 

@@ -39,10 +39,10 @@ public class Projeto {
 	@ManyToOne
 	private Politico politico;
 	@OneToMany(fetch = FetchType.LAZY)
-	@Cascade(CascadeType.DELETE)
+	@Cascade(CascadeType.ALL)
 	private List<Comentario> listaComentarios;
 	@OneToMany(fetch = FetchType.LAZY)
-	@Cascade(CascadeType.DELETE)
+	@Cascade(CascadeType.ALL)
 	private List<Reacao> listaReacoes;
 
 
