@@ -37,7 +37,7 @@ public class Projeto {
 	@Column(nullable = false)
 	private boolean conclusao;
 	@ManyToOne
-	private Usuario usuario;
+	private Politico politico;
 	@OneToMany(fetch = FetchType.LAZY)
 	@Cascade(CascadeType.DELETE)
 	private List<Comentario> listaComentarios;
@@ -110,12 +110,12 @@ public class Projeto {
 		this.conclusao = conclusao;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Politico getPolitico() {
+		return politico;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setPolitico(Politico politico) {
+		this.politico = politico;
 	}
 
 }

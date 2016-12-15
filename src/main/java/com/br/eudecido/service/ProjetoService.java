@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.br.eudecido.models.Comentario;
+import com.br.eudecido.models.Politico;
 import com.br.eudecido.models.Projeto;
 import com.br.eudecido.models.Reacao;
-import com.br.eudecido.models.Usuario;
 import com.br.eudecido.repository.ComentarioRepository;
 import com.br.eudecido.repository.ProjetoRepository;
 import com.br.eudecido.repository.ReacaoRepository;
@@ -39,8 +39,8 @@ public class ProjetoService {
 		return repositoryProjeto.findAll();
 	}
 	
-	public List<Projeto> listarPorUsuario(Usuario usuario){
-		return repositoryProjeto.findByUsuario(usuario);
+	public List<Projeto> listarPorUsuario(Politico politico){
+		return repositoryProjeto.findByPolitico(politico);
 	}
 	
 	public List<Projeto> listarPorNome(String nome){
@@ -66,10 +66,6 @@ public class ProjetoService {
 	public String excluirReacao(Integer id){
 		repositoryReacao.delete(id);
 		return "sucesso";
-	}
-	
-	public Reacao buscarReacaoPorUsuarioEProjeto(Usuario usuario, Projeto projeto){
-		return repositoryReacao.findByUsuarioAndProjeto(usuario, projeto);
 	}
 	
 	// Parte Comentario

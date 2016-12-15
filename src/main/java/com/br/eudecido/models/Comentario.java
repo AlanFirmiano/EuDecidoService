@@ -5,13 +5,11 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.br.eudecido.models.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -27,8 +25,6 @@ public class Comentario {
 	private Date data;
 	@ManyToOne
 	private Usuario usuario;
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Projeto projeto;
 
 	public Integer getId() {
 		return id;
@@ -61,13 +57,4 @@ public class Comentario {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
-	public Projeto getProjeto() {
-		return projeto;
-	}
-
-	public void setProjeto(Projeto projeto) {
-		this.projeto = projeto;
-	}
-
 }

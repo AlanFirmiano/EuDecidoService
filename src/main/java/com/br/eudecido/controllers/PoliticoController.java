@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.eudecido.models.Politico;
-import com.br.eudecido.models.Usuario;
-import com.br.eudecido.service.CredencialService;
 import com.br.eudecido.service.PoliticoService;
 
 @Controller
@@ -25,17 +23,15 @@ public class PoliticoController {
 	@Autowired
 	private PoliticoService service;
 
-	@Autowired
-	private CredencialService credencialService;
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> salvar(@RequestBody Politico politico) {
-		return new ResponseEntity<String>(credencialService.salvarPolitico(politico), HttpStatus.OK);
+		return new ResponseEntity<String>(service.salvar(politico), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/buscar", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Usuario> logar(@RequestBody Integer id) {
-		return new ResponseEntity<Usuario>(service.buscarPorId(id), HttpStatus.OK);
+	public ResponseEntity<Politico> logar(@RequestBody Integer id) {
+		return new ResponseEntity<Politico>(service.buscarPorId(id), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
