@@ -117,5 +117,14 @@ public class Projeto {
 	public void setPolitico(Politico politico) {
 		this.politico = politico;
 	}
+	
+	public Reacao getReacaoPorUsuario(Usuario usuario){
+		for(Reacao i : listaReacoes){
+			if(i.getUsuario().getId() == usuario.getId()){
+				return i;
+			}
+		}
+		return null;
+	}
 
 }

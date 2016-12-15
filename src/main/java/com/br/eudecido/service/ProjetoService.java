@@ -75,8 +75,19 @@ public class ProjetoService {
 
 	// Parte Reacao
 
-	public String salvarReacao(Reacao reacao) {
-		repositoryReacao.save(reacao);
+	public String salvarReacao(Projeto projeto) {
+		Reacao reacao = projeto.getListaReacoes().get(0);
+		Projeto p = this.buscarPorId(projeto.getId());
+		Reacao r = p.getReacaoPorUsuario(reacao.getUsuario());
+		
+		if( r == null){
+			repositoryReacao.save(reacao);
+			p.getListaReacoes().add(reacao);
+			repositoryProjeto.save(p);
+		}else{
+			r.setGostei(reacao.isGostei());
+			repositoryReacao.save(r);
+		}
 		return sucesso;
 	}
 

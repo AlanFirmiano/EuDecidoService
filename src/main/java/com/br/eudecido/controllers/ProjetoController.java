@@ -50,8 +50,8 @@ public class ProjetoController {
 	
 	@RequestMapping(value = "/salvarReacao", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> salvarReacao(@RequestBody Reacao reacao){
-		return new ResponseEntity<String>(pService.salvarReacao(reacao), HttpStatus.OK);
+	public ResponseEntity<String> salvarReacao(@RequestBody Projeto projeto){
+		return new ResponseEntity<String>(pService.salvarReacao(projeto), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/excluirReacao", method = RequestMethod.POST, 
