@@ -30,9 +30,9 @@ public class ProjetoController {
 		return new ResponseEntity<List<Projeto>>(pService.listar(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/teste", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Projeto> getUsuario(){
-		return new ResponseEntity<Projeto>(pService.buscarPorIdNotLazy(1), HttpStatus.OK);
+	@RequestMapping(value = "/buscarProjetoPorId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Projeto> getUsuario(@RequestBody Integer id){
+		return new ResponseEntity<Projeto>(pService.buscarPorId(id), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST, 
@@ -62,8 +62,8 @@ public class ProjetoController {
 	
 	@RequestMapping(value = "/salvarComentario", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> salvarComentario(@RequestBody Comentario comentario){
-		return new ResponseEntity<String>(pService.salvarComentario(comentario), HttpStatus.OK);
+	public ResponseEntity<String> salvarComentario(@RequestBody Projeto projeto){
+		return new ResponseEntity<String>(pService.salvarComentario(projeto), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/excluirComentario", method = RequestMethod.POST, 

@@ -102,8 +102,13 @@ public class ProjetoService {
 
 	// Parte Comentario
 
-	public String salvarComentario(Comentario comentario) {
+	public String salvarComentario(Projeto projeto) {
+		Comentario comentario = projeto.getListaComentarios().get(0);
+		Projeto p = this.buscarPorId(projeto.getId());
+		p.getListaComentarios().add(comentario);
 		repositoryComentario.save(comentario);
+		repositoryProjeto.save(p);
+		
 		return sucesso;
 	}
 
