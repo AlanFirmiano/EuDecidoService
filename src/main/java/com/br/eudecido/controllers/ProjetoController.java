@@ -38,8 +38,7 @@ public class ProjetoController {
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> salvar(@RequestBody Projeto projeto){
-		pService.salvar(projeto);
-		return new ResponseEntity<String>("Projeto cadastrado!", HttpStatus.OK);
+		return new ResponseEntity<String>(pService.salvar(projeto), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/excluir", method = RequestMethod.POST, 

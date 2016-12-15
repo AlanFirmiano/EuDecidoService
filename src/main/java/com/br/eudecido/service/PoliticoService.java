@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.br.eudecido.models.Credencial;
 import com.br.eudecido.models.Politico;
+import com.br.eudecido.models.Usuario;
 import com.br.eudecido.repository.CredencialRepository;
 import com.br.eudecido.repository.PoliticoRepository;
 
@@ -50,7 +51,19 @@ public class PoliticoService {
 	}
 
 	public Politico buscarPorId(Integer id) {
-		return repository.findById(id);
+		Politico politico = repository.findById(id);
+		if (politico != null) {
+			return politico;
+		}
+		return null;
+	}
+	
+	public Politico buscarPorUsuario(Usuario usuario){
+		Politico politico = repository.findByUsuario(usuario);
+		if(politico != null){
+			return politico;
+		}
+		return null;
 	}
 
 	public List<Politico> buscarTodos() {

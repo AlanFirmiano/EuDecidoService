@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.eudecido.models.Politico;
+import com.br.eudecido.models.Usuario;
 import com.br.eudecido.service.PoliticoService;
 
 @Controller
@@ -22,7 +23,6 @@ public class PoliticoController {
 
 	@Autowired
 	private PoliticoService service;
-
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> salvar(@RequestBody Politico politico) {
@@ -37,6 +37,11 @@ public class PoliticoController {
 	@RequestMapping(value = "/listar", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<Politico>> listar() {
 		return new ResponseEntity<List<Politico>>(service.buscarTodos(), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/buscarPorUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Politico> buscarPorUsuario(@RequestBody Usuario usuario) {
+		return new ResponseEntity<Politico>(service.buscarPorUsuario(usuario), HttpStatus.OK);
 	}
 
 }
