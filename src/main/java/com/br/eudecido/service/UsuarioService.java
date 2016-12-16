@@ -15,11 +15,6 @@ public class UsuarioService {
 	private UsuarioRepository repository;
 
 	public String salvar(Usuario usuario) {
-		if (this.buscarPorCPF(usuario.getCpf()) != null)
-			return "cpf";
-		if (this.buscarPorEmail(usuario.getEmail()) != null)
-			return "email";
-
 		repository.save(usuario);
 		return "sucesso";
 	}

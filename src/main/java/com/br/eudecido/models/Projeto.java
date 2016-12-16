@@ -1,6 +1,5 @@
 package com.br.eudecido.models;
 
-
 import java.sql.Date;
 import java.util.List;
 
@@ -44,7 +43,6 @@ public class Projeto {
 	@OneToMany(fetch = FetchType.LAZY)
 	@Cascade(CascadeType.ALL)
 	private List<Reacao> listaReacoes;
-
 
 	public List<Comentario> getListaComentarios() {
 		return listaComentarios;
@@ -117,14 +115,22 @@ public class Projeto {
 	public void setPolitico(Politico politico) {
 		this.politico = politico;
 	}
-	
-	public Reacao getReacaoPorUsuario(Usuario usuario){
-		for(Reacao i : listaReacoes){
-			if(i.getUsuario().getId() == usuario.getId()){
+
+	public Reacao getReacaoPorUsuario(Usuario usuario) {
+		for (Reacao i : listaReacoes) {
+			if (i.getUsuario().getId() == usuario.getId()) {
 				return i;
 			}
 		}
 		return null;
+	}
+
+	public void removerComentario(Integer id) {
+		for (Comentario c : listaComentarios) {
+			if (c.getId() == id) {
+				listaComentarios.remove(c);
+			}
+		}
 	}
 
 }

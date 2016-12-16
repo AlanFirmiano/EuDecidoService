@@ -32,7 +32,7 @@ public class ProjetoService {
 
 	public String salvar(Projeto projeto) {
 		repositoryProjeto.save(projeto);
-		
+
 		return sucesso;
 	}
 
@@ -65,7 +65,6 @@ public class ProjetoService {
 		return null;
 	}
 
-
 	public Projeto buscarPorIdNotLazy(Integer id) {
 		Projeto projeto = repositoryProjeto.findByIdNotLazy(id);
 		if (projeto != null) {
@@ -80,12 +79,12 @@ public class ProjetoService {
 		Reacao reacao = projeto.getListaReacoes().get(0);
 		Projeto p = this.buscarPorId(projeto.getId());
 		Reacao r = p.getReacaoPorUsuario(reacao.getUsuario());
-		
-		if( r == null){
+
+		if (r == null) {
 			repositoryReacao.save(reacao);
 			p.getListaReacoes().add(reacao);
 			repositoryProjeto.save(p);
-		}else{
+		} else {
 			r.setGostei(reacao.isGostei());
 			repositoryReacao.save(r);
 		}
@@ -109,16 +108,17 @@ public class ProjetoService {
 		p.getListaComentarios().add(comentario);
 		repositoryComentario.save(comentario);
 		repositoryProjeto.save(p);
-		
+
 		return sucesso;
 	}
 
-	public String excluirComentario(Integer id) {
-		Comentario comentario = repositoryComentario.findById(id);
-		if (comentario != null) {
-			repositoryComentario.delete(id);
-			return sucesso;
-		}
-		return erro;
+	public String excluirComentario(Projeto projeto) {
+		Comentario comentario = projeto.getListaComentarios().get(0);
+		System.err.println(comentario.getDescricao());		
+		Projeto p = this.buscarPorId(projeto.getId());
+		p.removerComentario(comentario.getId());
+		repositoryProjeto.save(p);
+		repositoryComentario.delete(comentario);
+		return sucesso;
 	}
 }

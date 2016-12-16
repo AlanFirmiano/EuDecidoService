@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.eudecido.models.Comentario;
+import com.br.eudecido.models.Politico;
 import com.br.eudecido.models.Projeto;
 import com.br.eudecido.models.Reacao;
 import com.br.eudecido.service.ProjetoService;
@@ -26,8 +26,13 @@ public class ProjetoController {
 	private ProjetoService pService;
 	
 	@RequestMapping(value = "/listarProjetos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<Projeto>> getAllUsuarios(){
+	public ResponseEntity<List<Projeto>> getAllProjetos(){
 		return new ResponseEntity<List<Projeto>>(pService.listar(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/listarPorPolitico", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<Projeto>> getAllFindByUsuario(@RequestBody Politico politico){
+		return new ResponseEntity<List<Projeto>>(pService.listarPorUsuario(politico), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/buscarProjetoPorId", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -44,8 +49,7 @@ public class ProjetoController {
 	@RequestMapping(value = "/excluir", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> excluir(@RequestBody Integer id){
-		pService.excluir(id);
-		return new ResponseEntity<String>("Deletado", HttpStatus.OK);
+		return new ResponseEntity<String>(pService.excluir(id), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/salvarReacao", method = RequestMethod.POST, 
@@ -68,8 +72,8 @@ public class ProjetoController {
 	
 	@RequestMapping(value = "/excluirComentario", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> excluirComentario(@RequestBody Comentario comentario){
-		return new ResponseEntity<String>(pService.excluirComentario(comentario.getId()), HttpStatus.OK);
+	public ResponseEntity<String> excluirComentario(@RequestBody Projeto projeto){
+		return new ResponseEntity<String>(pService.excluirComentario(projeto), HttpStatus.OK);
 	}
 	
 }

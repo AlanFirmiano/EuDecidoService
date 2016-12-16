@@ -25,7 +25,6 @@ public class Usuario {
 	private String senha;
 	@Column(nullable = false)
 	private String email;
-	
 	@OneToOne
 	@Cascade(CascadeType.ALL)
 	private Endereco endereco;
