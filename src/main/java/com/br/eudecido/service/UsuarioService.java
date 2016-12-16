@@ -15,6 +15,11 @@ public class UsuarioService {
 	private UsuarioRepository repository;
 
 	public String salvar(Usuario usuario) {
+		if (this.buscarPorCPF(usuario.getCpf()) != null) {
+			return "cpf";
+		} else if (this.buscarPorEmail(usuario.getEmail()) != null) {
+			return "email";
+		}
 		repository.save(usuario);
 		return "sucesso";
 	}
@@ -42,11 +47,9 @@ public class UsuarioService {
 	public String atualizar(Usuario usuario) {
 		Usuario user = this.buscarPorId(usuario.getId());
 
-		if ((user.getCpf().equals(usuario.getCpf()))
-				|| (this.buscarPorCPF(usuario.getCpf()) != null))
+		if ((user.getCpf().equals(usuario.getCpf())) || (this.buscarPorCPF(usuario.getCpf()) != null))
 			return "cpf";
-		if ((user.getEmail().equals(usuario.getEmail()))
-				|| (this.buscarPorEmail(usuario.getEmail()) != null))
+		if ((user.getEmail().equals(usuario.getEmail())) || (this.buscarPorEmail(usuario.getEmail()) != null))
 			return "email";
 
 		repository.save(usuario);
