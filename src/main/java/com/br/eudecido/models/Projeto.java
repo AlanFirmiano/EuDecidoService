@@ -38,7 +38,7 @@ public class Projeto {
 	@ManyToOne
 	private Politico politico;
 	@OneToMany(fetch = FetchType.LAZY)
-	@Cascade(CascadeType.ALL)
+	@Cascade(CascadeType.DELETE)
 	private List<Comentario> listaComentarios;
 	@OneToMany(fetch = FetchType.LAZY)
 	@Cascade(CascadeType.ALL)
@@ -126,9 +126,9 @@ public class Projeto {
 	}
 
 	public void removerComentario(Integer id) {
-		for (Comentario c : listaComentarios) {
-			if (c.getId() == id) {
-				listaComentarios.remove(c);
+		for (int i = 0; i < listaComentarios.size(); i++) {
+			if (listaComentarios.get(i).getId() == id) {
+				listaComentarios.remove(i);
 			}
 		}
 	}

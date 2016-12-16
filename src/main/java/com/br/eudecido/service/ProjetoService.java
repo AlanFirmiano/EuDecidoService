@@ -108,13 +108,11 @@ public class ProjetoService {
 		p.getListaComentarios().add(comentario);
 		repositoryComentario.save(comentario);
 		repositoryProjeto.save(p);
-
 		return sucesso;
 	}
 
 	public String excluirComentario(Projeto projeto) {
-		Comentario comentario = projeto.getListaComentarios().get(0);
-		System.err.println(comentario.getDescricao());		
+		Comentario comentario = repositoryComentario.findById(projeto.getListaComentarios().get(0).getId());
 		Projeto p = this.buscarPorId(projeto.getId());
 		p.removerComentario(comentario.getId());
 		repositoryProjeto.save(p);
