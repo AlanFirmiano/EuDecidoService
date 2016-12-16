@@ -33,7 +33,6 @@ public class Politico {
 	@Column(nullable = false)
 	private String cargo;
 	@OneToOne
-	@Cascade(CascadeType.ALL)
 	private Usuario usuario;
 
 	public Date getInicio_mandato() {

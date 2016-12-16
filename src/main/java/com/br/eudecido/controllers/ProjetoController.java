@@ -30,7 +30,7 @@ public class ProjetoController {
 		return new ResponseEntity<List<Projeto>>(pService.listar(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/buscarProjetoPorId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/buscarProjetoPorId", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Projeto> getUsuario(@RequestBody Integer id){
 		return new ResponseEntity<Projeto>(pService.buscarPorId(id), HttpStatus.OK);
 	}

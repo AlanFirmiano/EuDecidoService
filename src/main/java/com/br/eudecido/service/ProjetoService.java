@@ -16,7 +16,7 @@ import com.br.eudecido.repository.ReacaoRepository;
 @Service
 public class ProjetoService {
 
-	private String sucesso = "secesso";
+	private String sucesso = "sucesso";
 	private String erro = "erro";
 
 	@Autowired
@@ -64,6 +64,7 @@ public class ProjetoService {
 		}
 		return null;
 	}
+
 
 	public Projeto buscarPorIdNotLazy(Integer id) {
 		Projeto projeto = repositoryProjeto.findByIdNotLazy(id);
