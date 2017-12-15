@@ -20,9 +20,11 @@ public class Politico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+
 	@Column(nullable = false)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", locale = "GMT-3")
 	private Date inicio_mandato;
+
 	@Column(nullable = false)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", locale = "GMT-3")
 	private Date fim_mandato;
