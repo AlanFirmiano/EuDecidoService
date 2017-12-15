@@ -1,6 +1,7 @@
 package com.br.eudecido.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,9 +38,9 @@ public class ProjetoService {
 	}
 
 	public String excluir(Integer id) {
-		Projeto projeto = repositoryProjeto.findById(id);
+		Optional<Projeto> projeto = repositoryProjeto.findById(id);
 		if (projeto != null) {
-			repositoryProjeto.delete(id);
+			repositoryProjeto.delete(projeto.get());
 			return sucesso;
 		}
 		return erro;
@@ -58,9 +59,9 @@ public class ProjetoService {
 	}
 
 	public Projeto buscarPorId(Integer id) {
-		Projeto projeto = repositoryProjeto.findById(id);
+		Optional<Projeto> projeto = repositoryProjeto.findById(id);
 		if (projeto != null) {
-			return projeto;
+			return projeto.get();
 		}
 		return null;
 	}
@@ -92,9 +93,9 @@ public class ProjetoService {
 	}
 
 	public String excluirReacao(Integer id) {
-		Reacao reacao = repositoryReacao.findById(id);
+		Optional<Reacao> reacao = repositoryReacao.findById(id);
 		if (reacao != null) {
-			repositoryReacao.delete(id);
+			repositoryReacao.delete(reacao.get());
 			return sucesso;
 		}
 		return erro;
@@ -112,11 +113,11 @@ public class ProjetoService {
 	}
 
 	public String excluirComentario(Projeto projeto) {
-		Comentario comentario = repositoryComentario.findById(projeto.getListaComentarios().get(0).getId());
+		Optional<Comentario> comentario = repositoryComentario.findById(projeto.getListaComentarios().get(0).getId());
 		Projeto p = this.buscarPorId(projeto.getId());
-		p.removerComentario(comentario.getId());
+		p.removerComentario(comentario.get().getId());
 		repositoryProjeto.save(p);
-		repositoryComentario.delete(comentario);
+		repositoryComentario.delete(comentario.get());
 		return sucesso;
 	}
 }

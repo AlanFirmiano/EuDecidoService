@@ -10,8 +10,7 @@ import com.br.eudecido.models.Politico;
 import com.br.eudecido.models.Projeto;
 
 public interface ProjetoRepository extends JpaRepository<Projeto, Integer>{
-	
-	Projeto findById(Integer id);
+
 	
 	List<Projeto> findByNomeContainingIgnoreCase(String nome);
 	

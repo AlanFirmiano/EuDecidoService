@@ -1,6 +1,7 @@
 package com.br.eudecido.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,14 +26,14 @@ public class UsuarioService {
 	}
 
 	public void excluir(Integer id) {
-		repository.delete(id);
+		repository.delete(this.buscarPorId(id).get());
 	}
 
 	public List<Usuario> listar() {
 		return repository.findAll();
 	}
 
-	public Usuario buscarPorId(Integer id) {
+	public Optional<Usuario> buscarPorId(Integer id) {
 		return repository.findById(id);
 	}
 
@@ -45,11 +46,11 @@ public class UsuarioService {
 	}
 
 	public String atualizar(Usuario usuario) {
-		Usuario user = this.buscarPorId(usuario.getId());
+		Optional<Usuario> user = this.buscarPorId(usuario.getId());
 
-		if ((user.getCpf().equals(usuario.getCpf())) || (this.buscarPorCPF(usuario.getCpf()) != null))
+		if ((user.get().getCpf().equals(usuario.getCpf())) || (this.buscarPorCPF(usuario.getCpf()) != null))
 			return "cpf";
-		if ((user.getEmail().equals(usuario.getEmail())) || (this.buscarPorEmail(usuario.getEmail()) != null))
+		if ((user.get().getEmail().equals(usuario.getEmail())) || (this.buscarPorEmail(usuario.getEmail()) != null))
 			return "email";
 
 		repository.save(usuario);

@@ -3,6 +3,7 @@ package com.br.eudecido.service;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,9 +52,9 @@ public class PoliticoService {
 	}
 
 	public Politico buscarPorId(Integer id) {
-		Politico politico = repository.findById(id);
+		Optional<Politico> politico = repository.findById(id);
 		if (politico != null) {
-			return politico;
+			return politico.get();
 		}
 		return null;
 	}

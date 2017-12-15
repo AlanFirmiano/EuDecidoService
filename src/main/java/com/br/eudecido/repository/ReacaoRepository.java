@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.Query;
 import com.br.eudecido.models.Reacao;
 
 public interface ReacaoRepository extends JpaRepository<Reacao, Integer> {
-	Reacao findById(Integer id);
+
 }

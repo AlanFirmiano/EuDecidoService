@@ -6,7 +6,6 @@ import com.br.eudecido.models.Politico;
 import com.br.eudecido.models.Usuario;
 
 public interface PoliticoRepository extends JpaRepository<Politico, Integer>{
-	
-	Politico findById(Integer id);
+
 	Politico findByUsuario(Usuario usuario);
 }
